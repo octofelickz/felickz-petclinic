@@ -39,7 +39,7 @@ jobs:
         with:
           file: '${{ github.workspace }}/target/spring-petclinic-3.3.0-SNAPSHOT.jar'
           artifact-name: spring-petclinic-3.3.0-SNAPSHOT.jar.sbom.spdx
-          output-file: '${{ github.workspace }}/sbom'
+          output-file: '${{ github.workspace }}/sbom/spring-petclinic-3.3.0-SNAPSHOT.jar.sbom.spdx'
       - name: Generate SBOM attestation
         uses: actions/attest-sbom@v1
         with:

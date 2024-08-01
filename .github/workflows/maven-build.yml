@@ -38,3 +38,10 @@ jobs:
         uses: actions/attest-build-provenance@v1
         with:          
           subject-path: '${{ github.workspace }}/target/spring-petclinic-3.3.0-SNAPSHOT.jar'
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.4
+        with:
+          # Artifact name
+          name: jar
+          # A file, directory or wildcard pattern that describes what to upload
+          path: '${{ github.workspace }}/target/spring-petclinic-3.3.0-SNAPSHOT.jar'

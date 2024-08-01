@@ -34,6 +34,15 @@ jobs:
         run: ./mvnw -B -DskipTests=true package
       - run: |
           ls ${{ github.workspace }}/target/
+      - uses: anchore/sbom-action@v0
+        with:
+          file: '${{ github.workspace }}/target/spring-petclinic-3.3.0-SNAPSHOT.jar'
+          artifact-name: sbom.spdx
+      - name: Generate SBOM attestation
+        uses: actions/attest-sbom@v1
+        with:
+          subject-path: '${{ github.workspace }}/target/spring-petclinic-3.3.0-SNAPSHOT.jar'
+          sbom-path: 'sbom.spdx'
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:          

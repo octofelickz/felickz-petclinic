@@ -17,7 +17,7 @@ updates:
       prefix: deps
       prefix-development: chore
     labels:
-      - "Dependencies"
+      - "dependencies"
     groups:
       production-dependencies:
         dependency-type: "production"

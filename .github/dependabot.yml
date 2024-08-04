@@ -23,3 +23,32 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+  # ---------- Maven  ----------
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    reviewers:
+      - "felickz"
+    target-branch: "main"
+    commit-message:
+      prefix: deps
+      prefix-development: chore
+    labels:
+      - "dependencies"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+        applies-to: version-updates # Applies the group rule to version updates
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
+                      # ecosystem. Note: using "*" may open a large pull request
+        # Define patterns to exclude dependencies from the group (based on
+        # dependency name)
+        exclude-patterns:
+          - "org.testcontainers:jdbc"
+        update-types:
+        - "minor"
+        - "patch"
+      development-dependencies:
+        dependency-type: "development"

@@ -4,6 +4,12 @@
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
+registries:
+  gradle-artifactory:
+    type: maven-repository
+    url: https://octofelickz.jfrog.io/artifactory/gradle-registry
+    username: felickz
+    password: ${{secrets.ARTIFACTORY_PASSWORD}}
 updates:
   # ---------- GitHub Actions ----------
   - package-ecosystem: "github-actions"
@@ -26,6 +32,7 @@ updates:
   # ---------- Maven  ----------
   - package-ecosystem: "maven"
     directory: "/"
+    registries: "*"
     schedule:
       interval: "weekly"
     reviewers:
